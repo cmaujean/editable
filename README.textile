@@ -1,0 +1,60 @@
+h1. Editable
+
+Associate a set of possible editors/markup language processors with a field or fields on a model. A helper 
+is provided for displaying the proper editor or a textarea (for markup languages).
+
+<pre><code>
+  class BlogPost < ActiveRecord::Base
+    acts_as_editable :body, {:default_type => :textile, :allowed_types => [:textile, :markdown, :wymeditor]}
+  end
+
+  # in a view...
+  <%= form_for @post do |f| %>
+    ...
+    <%= f.editor_for :body, {:allow_switch => true}%>
+    ...
+  <% end %>
+</code></pre>
+
+
+h2. acts_as_editable :field, [options]
+
+h3. :field
+
+This is the field to attach the editor (and source processing to)
+
+h3. Options
+
+h4. :default_type
+
+The editor this field will use by default (if left unspecified, it will be :textile)
+
+h4. :allowed_types
+
+Limit the editors that this field is allowed to use. By default all editors will available.
+
+h2. editor_for :field, [options]
+
+This creates a text box and attaches any associated javascript necessary for the current editor type for that field.
+
+h3. :field
+
+This is the field the editor is for.
+
+h3. Options
+
+h4. :allow_switch
+
+If this option is set, and set to true, a set of links will be displayed, allowing the user to 
+change the editor they are using for that instance.
+
+h2. How it works
+
+acts_as_editable associates a Source instance with your model for each field specified. This Source instance 
+is where the "source" of that field will be stored. When the field is saved, the contents of the field are saved in 
+the related Source instance, run through the related processor and the results are stored in the original field on your
+model. 
+
+A Source instance has a related SourceType that (among other things) provides the name of the associated processor class. 
+
+Processing is done by "processor" classes. These provide a public #process! method that returns the processed source.
