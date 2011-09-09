@@ -5,7 +5,7 @@ is provided for displaying the proper editor or a textarea (for markup languages
 
 <pre><code>
   class BlogPost < ActiveRecord::Base
-    acts_as_editable :body, {:default_type => :textile, :allowed_types => [:textile, :markdown, :wymeditor]}
+    acts_as_editable { :field => :body, :default_type => :textile, :allowed_types => [:textile, :markdown, :wymeditor]}
   end
 
   # in a view...

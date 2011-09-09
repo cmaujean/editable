@@ -1,0 +1,1 @@
+require 'editable/processors/reverse'
