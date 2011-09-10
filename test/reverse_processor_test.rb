@@ -16,13 +16,13 @@ class EditableProcessorsReverseTest < ActiveSupport::TestCase
     assert_equal @processor.process(text), reversed
   end
   
-  test "it has an assets method" do
-    assert_respond_to @processor, :assets
+  test "it has an assets? method" do
+    assert_respond_to @processor, :assets?
   end
   
   # Reverse has no assets, so therefore #assets should return false 
   test "its assets method returns false" do
-    assert_equal @processor.assets, false
+    assert_equal @processor.assets?, false
   end
   
   test "it has a name method that returns :reverse" do

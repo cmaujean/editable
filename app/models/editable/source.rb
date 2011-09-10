@@ -1,8 +1,10 @@
 class Editable::Source < ActiveRecord::Base
   belongs_to :editable, :polymorphic => true
-  
+  def get_processor
+    @pr ||= "Editable::Processors::#{self.processor.to_s.camelize}".constantize.new
+    @pr
+  end
   def process!
-    pr = "Editable::Processors::#{self.processor.to_s.camelize}".constantize.new
-    return pr.process(self.editable_data)
+    return get_processor.process(self.editable_data)
   end
 end

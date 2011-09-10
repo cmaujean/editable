@@ -6,8 +6,12 @@ module Editable
         return text.reverse
       end
       
-      def assets
+      def assets?
         false
+      end
+      
+      def assets
+        ""
       end
       
       def name

@@ -18,7 +18,7 @@ module Editable
         self.editable_source_fields ||= [] 
         self.editable_source_fields << field
         has_one "#{field.to_s}_source".to_sym, :as => :editable, :class_name => "Editable::Source", :dependent => :destroy
-        before_validation :ensure_editable_sources
+        after_initialize :ensure_editable_sources
         before_validation :process_editable_sources
       end
     end
