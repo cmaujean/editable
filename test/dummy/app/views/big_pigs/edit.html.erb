@@ -1,0 +1,4 @@
+<%= form_for @bigpig do |f| %>
+  <%= raw editor(@bigpig, :body, {:cols => 50, :rows => 20}) %>
+  <%= f.submit %>
+<% end %>

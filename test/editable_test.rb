@@ -17,7 +17,7 @@ class EditableTest < ActiveSupport::TestCase
     assert_kind_of Array, BigPig.editable_source_fields
   end
   
-  test "wan editable model has field names in editable_source_fields" do
+  test "an editable model has field names in editable_source_fields" do
     assert BigPig.editable_source_fields[0] == :body
   end
   

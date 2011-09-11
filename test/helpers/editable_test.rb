@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class EditorForHelperTest < ActionView::TestCase
+class EditableHelperTest < ActionView::TestCase
   def setup
     @text = "<% @pig = BigPig.new %><%= form_for @pig do |f| %><%= raw editor(@pig, :body, {:cols => 50, :rows => 20}) %><%=f.text_field :id%><% end %>"
     render :inline => @text

@@ -1,0 +1,5 @@
+<ul>
+<% @bigpigs.each do |p| %>
+  <li><%= link_to p.id, big_pig_path(p) %></li>
+<% end %>
+</ul>
