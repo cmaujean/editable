@@ -23,9 +23,13 @@ class EditableProcessorsTextileTest < ActiveSupport::TestCase
     assert_respond_to @processor, :assets
   end
   
-  # Textile has no assets, so therefore #assets should return false 
-  test "assets method returns false" do
-    assert_equal @processor.assets, false
+  # Textile has no assets, so therefore #assets should return an empty string 
+  test "assets method returns an empty string" do
+    assert_equal @processor.assets, ""
+  end
+  
+  test "it has an assets? method that returns false" do
+    assert_equal @processor.assets?, false
   end
   
   test "it has a name method that returns :textile" do

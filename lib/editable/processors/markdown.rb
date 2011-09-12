@@ -1,9 +1,9 @@
-require 'redcloth'
+require 'redcarpet'
 module Editable
   module Processors
-    class Textile
+    class Markdown
       def process(text)
-        RedCloth.new(text).to_html
+        Redcarpet.new(text).to_html
       end
       
       def assets?
@@ -15,7 +15,7 @@ module Editable
       end
       
       def name
-        :textile
+        :markdown
       end
     end
   end
