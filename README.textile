@@ -19,7 +19,7 @@ Rake:
 Model:
 <pre><code>
   class BlogPost < ActiveRecord::Base
-    acts_as_editable :body, :processor => :reverse
+    acts_as_editable :body, :processor => :textile
   end
 </code></pre>
 
