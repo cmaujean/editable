@@ -1,41 +1,53 @@
 h1. Editable
 
 Associate a set of possible editors/markup language processors with a field or fields on a model. A helper 
-is provided for displaying the proper editor or a textarea (for markup languages).
+is provided for displaying the proper editor or a plain textarea (for markup languages).
 
+h2. Usage
+
+Gemfile
+<pre><code>
+  gem 'editable'
+</code></pre>
+
+Rake:
+<pre><code>
+  rake editable_engine:install:migrations
+  rake db:migrate
+</code></pre>
+
+Model:
 <pre><code>
   class BlogPost < ActiveRecord::Base
-    acts_as_editable { :field => :body, :default_type => :textile, :allowed_types => [:textile, :markdown, :wymeditor]}
+    acts_as_editable :body, :processor => :reverse
   end
+</code></pre>
 
-  # in a view...
+View:
+<pre><code>
   <%= form_for @post do |f| %>
     ...
-    <%= f.editor_for :body, {:allow_switch => true}%>
+    <%= raw editor(@post, :body, {:cols => 60, :rows => 20}) %>
     ...
   <% end %>
 </code></pre>
 
 
-h2. acts_as_editable :field, [options]
+h2. acts_as_editable(:field, :processor => :processor_name)
 
 h3. :field
 
-This is the field to attach the editor (and source processing to)
+This is the field to attach the editor (and source processing)
 
 h3. Options
 
-h4. :default_type
-
-The editor this field will use by default (if left unspecified, it will be :textile)
-
-h4. :allowed_types
-
-Limit the editors that this field is allowed to use. By default all editors will available.
-
-h2. editor_for :field, [options]
+h2. editor(instance, :field, {option => value})
 
 This creates a text box and attaches any associated javascript necessary for the current editor type for that field.
+
+h3. instance
+
+This is an instance of ActiveRecord::Base that has acts_as_editable field(s)
 
 h3. :field
 
@@ -43,18 +55,20 @@ This is the field the editor is for.
 
 h3. Options
 
-h4. :allow_switch
+Options are turned into attributes on the created textarea
 
-If this option is set, and set to true, a set of links will be displayed, allowing the user to 
-change the editor they are using for that instance.
+h2. Current Editors/processors support
 
-h2. How it works
+# Reverse - bare textarea, simple processor that reverses the string. used for the tests
+# Textile - bare textarea, simple RedCloth processing of textile input. 
 
-acts_as_editable associates a Source instance with your model for each field specified. This Source instance 
-is where the "source" of that field will be stored. When the field is saved, the contents of the field are saved in 
-the related Source instance, run through the related processor and the results are stored in the original field on your
-model. 
+h2. issues/bugs/todo
 
-A Source instance has a related SourceType that (among other things) provides the name of the associated processor class. 
+# Need more tests
+# Needs editor switching
+# Needs more processors/editors integrated
+# Needs better handling of multiple acts_as_editable fields, need to assign a processor to each field, rather than
+keeping a single processor for the entire model.
+# We should be able to get a syntax aware textarea running for markdown/textile.
 
-Processing is done by "processor" classes. These provide a public #process! method that returns the processed source.
+Submit other bugs, suggestions, feature requests, criticisms, kudos, etc to "Issues":https://github.com/azimuth/editable/issues
