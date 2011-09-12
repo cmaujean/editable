@@ -13,12 +13,12 @@ class EditableTest < ActiveSupport::TestCase
     assert_respond_to BigPig, :editable_source_fields
   end
   
-  test "class accessor editable_source_fields is an array" do
-    assert_kind_of Array, BigPig.editable_source_fields
+  test "an editable model has field names in editable_source_fields" do
+    assert BigPig.editable_source_fields.keys.include? :body
   end
   
-  test "an editable model has field names in editable_source_fields" do
-    assert BigPig.editable_source_fields[0] == :body
+  test "an editable model has processor names in editable_source fields" do
+    assert_equal :textile, BigPig.new(:body => "You can be a big pig too! Oy!").editable_source_fields[:body]
   end
   
   test "an editable field has an associated source relation" do
@@ -33,9 +33,9 @@ class EditableTest < ActiveSupport::TestCase
   end
   
   test "when saving editable models the editable source relations are processed and saved to the editable fields" do
-    source_text = "Come on down and dine on this tasty swine all you have to do is get in line."
+    source_text = "h1. Come on down and dine on this tasty swine all you have to do is get in line."
     pumba = BigPig.create(:body => source_text)
-    assert pumba.body == ".enil ni teg si od ot evah uoy lla eniws ytsat siht no enid dna nwod no emoC", "processing works"
+    assert pumba.body == "<h1>Come on down and dine on this tasty swine all you have to do is get in line.</h1>", "processing works"
     assert pumba.body_source.editable_data == source_text, "source editable_data is still the source"
   end
 end

@@ -4,11 +4,9 @@ class Editable::Source < ActiveRecord::Base
     "editable_sources"
   end
   
-  def get_processor
-    @pr ||= "Editable::Processors::#{self.processor.to_s.camelize}".constantize.new
-    @pr
-  end
-  def process!
-    return get_processor.process(self.editable_data)
+  ASSETS = { :bogus => "bogus editor assets for testing"}
+  
+  def editor_assets
+    ASSETS[self.processor] or ""
   end
 end
