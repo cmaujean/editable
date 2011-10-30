@@ -6,5 +6,6 @@ spec/dummy/log/
 spec/dummy/log/
 spec/dummy/tmp/
 Gemfile.lock
+.idea/
 
 

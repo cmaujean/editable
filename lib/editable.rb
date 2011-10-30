@@ -5,9 +5,6 @@ module Editable
   module ActsAsEditable
     extend ActiveSupport::Concern
 
-    included do
-    end
-
     module ClassMethods
       def acts_as_editable(field, processor, options={})
         cattr_accessor :editable_source_fields

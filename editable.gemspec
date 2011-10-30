@@ -7,9 +7,9 @@ require "editable/version"
 Gem::Specification.new do |s|
   s.name        = "editable"
   s.version     = Editable::VERSION
-  s.authors     = ["Christopher Maujean", "Day Waterbury"]
-  s.email       = ["christopher@azimuthonline.com", "day@azimuthonline.com"]
-  s.homepage    = "http://azimuthonline.com/"
+  s.authors     = ["Christopher Maujean"]
+  s.email       = ["christopher@gmail.com"]
+  s.homepage    = "http://dropset.org"
   s.summary     = "Assosiate any js based wysiwig editor or markup language processor to a field (or fields) in a model."
   s.description = "
   Associate a set of possible editors/markup language processors with a field or fields on a model. A helper 
