@@ -1,5 +1,6 @@
 Dummy::Application.routes.draw do
   resources :big_pigs
+  resources :meer_kats
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

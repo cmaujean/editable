@@ -1,7 +1,10 @@
 .bundle/
-log/*.log
+spec/dummy/log/*.log
 pkg/
-test/dummy/db/*.sqlite3
-test/dummy/log/*.log
-test/dummy/tmp/
+spec/dummy/db/*.sqlite3
+spec/dummy/log/
+spec/dummy/log/
+spec/dummy/tmp/
 Gemfile.lock
+
+

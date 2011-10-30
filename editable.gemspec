@@ -28,7 +28,7 @@ Gem::Specification.new do |s|
   "
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.textile"]
-  s.test_files = Dir["test/**/*"]
+  s.test_files = Dir["spec/**/*"]
 
   s.add_dependency "rails", "~> 3.1.0"
   s.add_dependency "jquery-rails"
@@ -40,4 +40,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency "term-ansicolor"
   s.add_development_dependency "turn"
   s.add_development_dependency "rcov"
+  s.add_development_dependency "rspec-rails"
+  s.add_development_dependency "webrat"
 end

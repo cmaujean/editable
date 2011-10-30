@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110911025509) do
+ActiveRecord::Schema.define(:version => 20110913183855) do
 
   create_table "big_pigs", :force => true do |t|
     t.string   "body"
@@ -25,6 +25,11 @@ ActiveRecord::Schema.define(:version => 20110911025509) do
     t.text     "editable_data"
     t.string   "processor",      :null => false
     t.string   "editable_field"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "meer_kats", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end

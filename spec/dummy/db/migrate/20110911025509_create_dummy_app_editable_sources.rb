@@ -1,4 +1,4 @@
-class CreateEditableSources < ActiveRecord::Migration
+class CreateDummyAppEditableSources < ActiveRecord::Migration
   def change
     create_table :editable_sources do |t|
       t.references :editable, :polymorphic => true
