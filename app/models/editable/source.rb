@@ -4,9 +4,12 @@ class Editable::Source < ActiveRecord::Base
     "editable_sources"
   end
   
-  ASSETS = { :bogus => "bogus editor assets for testing"}
+  ASSETS = { 
+    :bogus => "bogus_editor_assets_for_testing.js",
+    :wymeditor => "wymeditor.js",
+  }
   
   def editor_assets
-    ASSETS[self.processor] or ""
+    Editable::Source::ASSETS[self.processor] or ""
   end
 end

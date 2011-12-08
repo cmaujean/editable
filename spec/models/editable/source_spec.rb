@@ -35,7 +35,7 @@ describe Editable::Source do
   
   it "provides assets for a given editor when assets exist" do
     src_bogus = Editable::Source.new(:editable_data => @src_data, :editable_field => :bacon, :processor => :bogus)
-    src_bogus.editor_assets.should == "bogus editor assets for testing"
+    src_bogus.editor_assets.should == "bogus_editor_assets_for_testing.js"
   end
   
   it "does not provide assets for a given editor when the assets do not exist" do
