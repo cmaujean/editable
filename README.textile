@@ -1,4 +1,6 @@
-h1. Editable
+h1. Editable  
+
+"!https://codeclimate.com/github/cmaujean/editable.png!":https://codeclimate.com/github/cmaujean/editable
 
 Associate a set of possible editors/markup language processors with a field or fields on a model. A helper 
 is provided for displaying the proper editor or a plain textarea (for markup languages).
